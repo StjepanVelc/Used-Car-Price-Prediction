@@ -4,7 +4,7 @@ import argparse
 from pathlib import Path
 
 import pandas as pd
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
 from sklearn.linear_model import LinearRegression, Ridge
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.model_selection import train_test_split
@@ -30,6 +30,7 @@ def compare_models(df: pd.DataFrame, test_size: float = 0.2, random_state: int =
         "linear_regression": LinearRegression(),
         "ridge": Ridge(alpha=1.0),
         "decision_tree": DecisionTreeRegressor(random_state=random_state, max_depth=18, min_samples_leaf=2),
+        "gradient_boosting": GradientBoostingRegressor(random_state=random_state),
         "random_forest": RandomForestRegressor(
             n_estimators=150, random_state=random_state, n_jobs=-1, min_samples_leaf=2
         ),

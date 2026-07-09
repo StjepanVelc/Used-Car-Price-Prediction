@@ -9,13 +9,13 @@ EDA -> data cleaning -> feature engineering -> preprocessing -> model comparison
 ## Project Structure
 
 ```text
-car-price-prediction/
+Used-Car-Price-Prediction/
 ├── data/
 │   ├── cars.csv
 │   ├── cars_clean.csv
 │   └── cars_features.csv
 ├── notebooks/
-│   └── eda.ipynb
+│   └── 01_used_car_price_prediction_workflow.ipynb
 ├── src/
 │   ├── __init__.py
 │   ├── data_cleaning.py
@@ -74,6 +74,7 @@ Main raw columns include:
 - Linear Regression
 - Ridge Regression
 - Decision Tree Regressor
+- Gradient Boosting Regressor
 - Random Forest Regressor
 
 5. Final Training (`src/model_training.py`)
@@ -132,10 +133,17 @@ Model comparison on the same split:
 |---|---:|---:|---:|
 | random_forest | 958.57 | 1670.34 | 0.9217 |
 | decision_tree | 1145.90 | 1984.06 | 0.8896 |
+| gradient_boosting | 1314.29 | 2041.63 | 0.8831 |
 | linear_regression | 1623.32 | 2469.63 | 0.8289 |
 | ridge | 1625.21 | 2473.09 | 0.8285 |
 
 Result takeaway: `random_forest` achieved the best overall performance (lowest MAE/RMSE and highest R2), so it is kept as the final model in `models/car_price_model.joblib`.
+
+## Why Random Forest Was Selected
+
+Random Forest was selected as the final model because it achieved the lowest MAE and RMSE and the highest R2 score compared to the other tested models.
+
+The most important metric for this task is MAE because it is easy to interpret in business terms. In this project, the final MAE is about 958.57 USD, which means that the model is wrong by about 959 USD on average.
 
 ## Output Artifacts
 
